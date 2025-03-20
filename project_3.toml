@@ -1,0 +1,11 @@
+
+
+[tool.isort]
+profile = "black"
+
+
+# pyproject.toml
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
