@@ -1,0 +1,39 @@
+name: Conda CI Workflow
+
+on:
+  push:
+    branches:
+      - feature/setup-conda-ci
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: myenv
+          environment-file: env.yml
+          auto-activate-base: false
+
+      - name: Install dependencies
+        shell: bash -l {0}
+        run: |
+          conda env update --file env.yml --name myenv
+
+      - name: Run Flake8 Linting
+        shell: bash -l {0}
+        run: |
+          flake8 .
+
+      - name: Run nonstandardcode.py
+        shell: bash -l {0}
+        run: |
+          python nonstandardcode.py
