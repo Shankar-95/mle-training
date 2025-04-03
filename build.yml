@@ -1,0 +1,43 @@
+name: Build and Upload Package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Build Python Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install build tools
+        run: pip install build
+
+      - name: Install tree CLI tool
+        run: sudo apt-get install tree
+
+      - name: Show directory tree before build
+        run: tree -L 2
+
+      - name: Build the package
+        run: python -m build
+
+      - name: Show directory tree after build
+        run: tree -L 2
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-package
+          path: dist/
+          retention-days: 7  # Keep artifacts for 7 days

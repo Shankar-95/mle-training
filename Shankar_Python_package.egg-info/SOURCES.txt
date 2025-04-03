@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+Shankar_Python_package.egg-info/PKG-INFO
+Shankar_Python_package.egg-info/SOURCES.txt
+Shankar_Python_package.egg-info/dependency_links.txt
+Shankar_Python_package.egg-info/requires.txt
+Shankar_Python_package.egg-info/top_level.txt
