@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Shankar_Python_package"
+version = "0.1.0"
+description = "Python packaging for MLE Training"
+readme = "README.md"
+authors = [{ name = "Shankar", email = "gowri.gopalakris@tigeranalytics.com" }]
+license = { text = "MIT" }
+dependencies = [
+    "requests",  # Example dependency
+    "numpy"
+]
+
+[project.urls]
+Homepage = "https://github.com/Shankar-95/mle-training/Python_package"
